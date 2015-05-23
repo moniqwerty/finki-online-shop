@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: localhost
--- Generation Time: May 23, 2015 at 09:27 AM
+-- Generation Time: May 23, 2015 at 08:46 PM
 -- Server version: 5.6.12-log
 -- PHP Version: 5.4.12
 
@@ -148,20 +148,21 @@ INSERT INTO `products` (`id`, `name`, `description`, `category_id`, `small_img`,
 CREATE TABLE IF NOT EXISTS `users` (
   `user_id` int(50) NOT NULL AUTO_INCREMENT,
   `username` varchar(20) NOT NULL,
-  `password` varchar(20) NOT NULL,
+  `password` varchar(200) NOT NULL,
   `email` varchar(20) NOT NULL,
   `usertype` varchar(20) NOT NULL,
   PRIMARY KEY (`user_id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=4 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=11 ;
 
 --
 -- Dumping data for table `users`
 --
 
 INSERT INTO `users` (`user_id`, `username`, `password`, `email`, `usertype`) VALUES
-(1, 'user1', 'user', 'user@finki.com', 'user'),
-(2, 'user2', 'user', 'user2@finki.com', 'user'),
-(3, 'admin', 'admin', 'admin@finki.com', 'admin');
+(3, 'admin', 'admin', 'admin@finki.com', 'admin'),
+(8, 'user1', '438cecd9768256dcb439ddc610ce4b72', 'user1@finki.mk', 'user'),
+(9, 'user2', '438cecd9768256dcb439ddc610ce4b72', 'user2@finki.mk', 'user'),
+(10, 'user3', '438cecd9768256dcb439ddc610ce4b72', 'user3@finki.mk', 'user');
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
