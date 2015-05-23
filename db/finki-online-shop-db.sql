@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: localhost
--- Generation Time: May 19, 2015 at 08:43 PM
+-- Generation Time: May 23, 2015 at 09:27 AM
 -- Server version: 5.6.12-log
 -- PHP Version: 5.4.12
 
@@ -33,8 +33,15 @@ CREATE TABLE IF NOT EXISTS `cart` (
   `user_id` int(11) NOT NULL,
   `product_id` int(11) NOT NULL,
   `quantity` int(11) NOT NULL,
-  PRIMARY KEY (`cart_id`,`user_id`)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
+  PRIMARY KEY (`cart_id`)
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=2 ;
+
+--
+-- Dumping data for table `cart`
+--
+
+INSERT INTO `cart` (`cart_id`, `user_id`, `product_id`, `quantity`) VALUES
+(1, 0, 1, 2);
 
 -- --------------------------------------------------------
 
