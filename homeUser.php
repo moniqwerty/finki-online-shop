@@ -105,8 +105,7 @@
 								</div>
 							</div>
 						</div>
-						<?php } ?>
-						
+						<?php } ?>						
 					</div>
 					
 					<div class="pull-right">
@@ -136,8 +135,7 @@
 			</div>
 
 		</div>
-		<!-- /.container -->
-		
+		<!-- /.container -->		
 		
 		<div class="container">
 
@@ -147,7 +145,6 @@
 					<div class="row">
 						<div class="col-lg-12">
 							<div class="row well">
-
 								<p align="center">
 									2014  ФИНКИ |    Факултет за информатички науки и компјутерско инженерство
 								</p>
@@ -158,8 +155,6 @@
 				</footer>
 
 			</div><!-- /.container -->
-
-
 
 
 		<!-- jQuery -->

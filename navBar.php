@@ -1,14 +1,15 @@
 <nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
 	<?php  //proveruvame dali ima nekoj najaven
-	if (isset($_SESSION['username'])) {
-		$flag = 1;
+		if (isset($_SESSION['username'])) {
+			$flag = 1;
 		} else {
-			$flag = 0;}	?>
+			$flag = 0;
+		}	
+	?>
 			
 <div class="container">
 				<div class="navbar-header">					
 					<a class="navbar-brand" href="homeUser.php">Online shop - Најновите производи од информатичката технологија </a>
-
 				</div>
 				<!-- Collect the nav links, forms, and other content for toggling -->
 				<div class="collapse navbar-collapse navbar-ex1-collapse">
@@ -25,11 +26,8 @@
 							echo '<li><a href="login.php">Најава</a></li>
 								  <li><a href="signup.php">Регистрација</a></li>';
 						}
-						?>
-
-						
+						?>						
 					</ul>
 				</div><!-- /.navbar-collapse -->
 			</div><!-- /.container -->
-
 		</nav>

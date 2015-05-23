@@ -6,6 +6,7 @@
          font-size: 12px;
          text-align: center;
         }
+		
         table{
         	border-spacing: 2px;
             border-collapse: separate;
@@ -14,6 +15,7 @@
             cursor: pointer;
            
         }
+		
         .FixedHeightContainer
 		{
 			margin-top: -41%;
@@ -25,12 +27,14 @@
     		background:#d9534f;
     		border-radius: 4px;
 		}
+		
 		.Content
 		{
   			height:370px;
    			overflow:auto;
     		background:#fff;
 		}
+		
 		.items{
 			height: 50px;
 			margin: 5px;
@@ -38,9 +42,11 @@
 			border: 3px solid grey;
 			vertical-align: middle;
 		}
+		
 		.items_content{
 			padding-top: 0.8em;
 		}
+		
 		#legend{
 			display:inline-table;
 			width: 20%;

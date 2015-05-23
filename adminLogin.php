@@ -34,14 +34,12 @@ if (isset($_POST['submit'])) {
 			$_SESSION["type"]="admin";
 			
 			header('Location: homeAdmin_temp.php');
-			
+						
 		} else {
 			echo "error so baza";
 		}
 	} else {
-		
-		$error='<span style=float:right;color:red>Невалидни податоци!&nbsp </span>';
-		
+		$error='<span style=float:right;color:red>Невалидни податоци!&nbsp </span>';	
 	}
 }
 ?>
@@ -99,11 +97,7 @@ if (isset($_POST['submit'])) {
                                     </div>
                                 </div>
 
-
-                              
                             </form>     
-
-
 
                         </div>                     
                     </div>  
@@ -111,4 +105,4 @@ if (isset($_POST['submit'])) {
         
     </div>
     </body>
-    </html>
+</html>
