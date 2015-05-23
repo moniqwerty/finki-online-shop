@@ -154,8 +154,7 @@ if(isset($_GET['event_id']))
   				<th class="text-center">Цена</th>
           <th class="text-center">Купени</th>
   				<th class="text-center">Измени</th>
-  				<th class="text-center">Деактивирај</th>
-          
+  				<th class="text-center">Деактивирај</th>         
   				
   			</tr>
   			<?php 
@@ -176,11 +175,9 @@ if(isset($_GET['event_id']))
   	  			 "<td class=\"text-center\"><a href=\"admin_editProduct.php?productid=$row[id]\">Измени</a></td>".
   	  			 "<td class=\"text-center\"><a href=\"admin_deleteProduct.php?productid=$row[id]\">Избриши</a></td>";//todo
                  "</tr>";			
-  				}
-  			
+  				}  			
   			?>
-			</table>
-           
+			</table>           
            
             <!-- /.row -->
          </div>   
