@@ -180,7 +180,10 @@ if(isset($_GET['event_id']))
 			</table>           
            
             <!-- /.row -->
-         </div>   
+         </div> 
+
+         <a href="addProduct.php" class="btn btn-primary" role="button" style="float:right; margin-right:2%;">Додади продукт</a>
+           
             <!-- /.row -->
         </div>
         <!--end of row -->

@@ -149,13 +149,13 @@ if (isset($_POST['submit'])) {
             <!-- /.navbar-header -->
 
             <ul class="nav navbar-top-links navbar-right">
-                <li class="dropdown">
+                <!-- <li class="dropdown">
                     <a class="dropdown-toggle" data-toggle="dropdown" href="#">
                         <i class="fa fa-envelope fa-fw"></i>  <i class="fa fa-caret-down"></i>
                     </a>
                     
-                    <!-- /.dropdown-messages -->
-                </li>
+                    <!-- /.dropdown-messages 
+                </li> -->
                 <!-- /.dropdown -->
                 
               
@@ -265,7 +265,7 @@ if (isset($_POST['submit'])) {
 <input  type="file"  value="Избери Слика:" name="file1" id="file1"  />
 <br/>
 </div>
-<input  class="btn btn-default" type="submit"  value="Прикачи" name="submit" id="submit" style="margin-bottom: 1%;"  />
+<input  class="btn btn-default" type="submit"  value="Додади" name="submit" id="submit" style="margin-bottom: 1%;"  />
 
 </form>
 
