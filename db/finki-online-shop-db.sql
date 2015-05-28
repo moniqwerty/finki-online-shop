@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: localhost
--- Generation Time: May 28, 2015 at 12:30 PM
+-- Generation Time: May 28, 2015 at 10:25 PM
 -- Server version: 5.6.12-log
 -- PHP Version: 5.4.12
 
@@ -34,7 +34,7 @@ CREATE TABLE IF NOT EXISTS `cart` (
   `product_id` int(11) NOT NULL,
   `quantity` int(11) NOT NULL,
   PRIMARY KEY (`cart_id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_bin AUTO_INCREMENT=8 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_bin AUTO_INCREMENT=9 ;
 
 --
 -- Dumping data for table `cart`
@@ -47,7 +47,8 @@ INSERT INTO `cart` (`cart_id`, `user_id`, `product_id`, `quantity`) VALUES
 (4, 8, 21, 1),
 (5, 8, 16, 1),
 (6, 8, 7, 1),
-(7, 8, 23, 1);
+(7, 8, 23, 1),
+(8, 8, 10, 1);
 
 -- --------------------------------------------------------
 
@@ -82,6 +83,7 @@ INSERT INTO `categories` (`id`, `name`, `description`) VALUES
 
 CREATE TABLE IF NOT EXISTS `order` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
+  `user_id` int(11) NOT NULL,
   `customerName` varchar(30) CHARACTER SET latin1 NOT NULL,
   `customerMail` varchar(30) CHARACTER SET latin1 NOT NULL,
   `shippingAddress` varchar(100) CHARACTER SET latin1 NOT NULL,
@@ -93,9 +95,9 @@ CREATE TABLE IF NOT EXISTS `order` (
 -- Dumping data for table `order`
 --
 
-INSERT INTO `order` (`id`, `customerName`, `customerMail`, `shippingAddress`, `date`) VALUES
-(1, 'name', 'user1@finki.com', 'address ', '2015-05-18'),
-(2, 'name2', 'user2@finki.com', 'address', '2015-05-20');
+INSERT INTO `order` (`id`, `user_id`, `customerName`, `customerMail`, `shippingAddress`, `date`) VALUES
+(1, 1, 'name', 'user1@finki.com', 'address ', '2015-05-18'),
+(2, 2, 'name2', 'user2@finki.com', 'address', '2015-05-20');
 
 -- --------------------------------------------------------
 
