@@ -1,6 +1,5 @@
 <!DOCTYPE html>
 <?php include_once 'database.php';
- //include_once 'delete_reservations.php';
 ?>
 <html lang="en">
 	<head>
@@ -44,7 +43,7 @@
 								$start_from = ($page-1) * $num_rec_per_page; 								
 
 							// selekcija na site proizvodi od odbranata kategorija
-							$products=mysqli_query($link, "SELECT * FROM products WHERE category_id LIKE '$id'");
+							$products=mysqli_query($link, "SELECT * FROM products WHERE category_id LIKE '$id' LIMIT $start_from, $num_rec_per_page");
 								while ($product=mysqli_fetch_assoc($products)) {
 									$productID=$product['id'];		
 							?>
@@ -52,7 +51,6 @@
 							<div class="thumbnail">
 								<img src="images/<?php echo $product['big_img'];?>" alt="http://placehold.it/320x150" >
 								<div class="caption">
-									<!--<h4 class="pull-right">$24.99</h4>  &id=$id-->
 									<h4><a href='<?php echo "item.php?ev=$productID&id=$id"?>'><?php echo $product['name'] ?></a></h4>
 									<p>
 										<?php echo $product['description']?>
@@ -102,7 +100,7 @@
 							<div class="row well">
 
 								<p align="center">
-									2014  ФИНКИ |    Факултет за информатички науки и компјутерско инженерство
+									2015  ФИНКИ |    Факултет за информатички науки и компјутерско инженерство
 								</p>
 							</div>
 

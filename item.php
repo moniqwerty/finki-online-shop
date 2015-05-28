@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <?php include_once 'database.php';
- //include_once 'delete_reservations.php';?>
+ ?>
 <head>
 
     <meta charset="utf-8">
@@ -108,7 +108,7 @@
 							<div class="row well">
 
 								<p align="center">
-									2014  ФИНКИ |    Факултет за информатички науки и компјутерско инженерство
+									2015  ФИНКИ |    Факултет за информатички науки и компјутерско инженерство
 								</p>
 							</div>
 

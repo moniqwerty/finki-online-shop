@@ -89,7 +89,7 @@
 								$start_from = ($page-1) * $num_rec_per_page; 								
 
 							//selekcija na site proizvodi za prikazuvanje
-							$products=mysqli_query($link, "SELECT * FROM products");
+							$products=mysqli_query($link, "SELECT * FROM products LIMIT $start_from, $num_rec_per_page");
 								while ($product=mysqli_fetch_assoc($products)) {
 									$productID=$product['id'];	
 							?>
@@ -146,7 +146,7 @@
 						<div class="col-lg-12">
 							<div class="row well">
 								<p align="center">
-									2014  ФИНКИ |    Факултет за информатички науки и компјутерско инженерство
+									2015  ФИНКИ |    Факултет за информатички науки и компјутерско инженерство
 								</p>
 							</div>
 
