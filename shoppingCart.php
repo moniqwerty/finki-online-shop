@@ -78,7 +78,7 @@
 												$categoryID = $prod['category_id'];
 												$cat = mysqli_fetch_assoc(mysqli_query($link, "SELECT * FROM categories WHERE id LIKE '$categoryID'")); 
 												$category = $cat['name'];
-											}
+											
 									?>
 				
 					<div class="row">
@@ -96,7 +96,7 @@
 							</div>
 							<br />
 							<div class="col-xs-2 text-center ">
-								<a href='<?php echo "deleteTicket.php?delId=$productID"?>'>
+								<a href='<?php echo "deleteProduct.php?delId=$productID"?>'>
 									<span class="glyphicon glyphicon-trash" style="font-size: 24px"> </span>
 								</a>
 							</div>
@@ -104,7 +104,9 @@
 					</div>
 					<hr>
 							
-				<?php  } ?>	
+				<?php  
+				}
+				} ?>	
 					
 				</div>							
 								
