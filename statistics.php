@@ -147,7 +147,7 @@ if(!empty($_SESSION['adminname'])) {
 <ul class="nav nav-tabs" role="tablist" id="myTab">
   <!-- <li role="presentation"><a href="#home" aria-controls="home" role="tab" data-toggle="tab">Најгледани претстави</a></li> -->
   <li role="presentation"><a href="#messages" aria-controls="messages" role="tab" data-toggle="tab">Преферирана категорија на продукт</a></li>
-  <li role="presentation"><a href="#settings" aria-controls="settings" role="tab" data-toggle="tab">Продадени билети</a></li>
+  <li role="presentation"><a href="#settings" aria-controls="settings" role="tab" data-toggle="tab">Продадени производи</a></li>
 </ul>
 
 <div class="tab-content">
