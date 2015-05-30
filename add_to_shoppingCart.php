@@ -4,7 +4,7 @@ include_once 'database.php';
 $user_id=$_REQUEST["userid"];
 $product_id=$_REQUEST["prodid"];
 $quantity=$_REQUEST["quantity"];
-$conn=mysqli_connect('localhost','root','','finki-online-shop-db');
+//$conn=mysqli_connect('localhost','root','','finki-online-shop-db');
 
 if(!$user_id){
 	header("Location:login.php");
@@ -20,8 +20,8 @@ else {
 		$products = mysqli_fetch_assoc($cart);
 		$sql="INSERT INTO cart (user_id, product_id, quantity) VALUES( ".$user_id.",".$product_id.",".$quantity.") WHERE cart_id = ".$products['cart_id'].";";
 	} */
-	 if(!mysqli_query($conn,$sql))
-		echo mysqli_error($conn);
+	 if(!mysqli_query($link,$sql))
+		echo mysqli_error($link);
 	 header("Location:shoppingCart.php");
 }
 ?>
