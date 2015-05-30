@@ -77,18 +77,22 @@
 					
 					<?php
 					// go naogame id-to na logiraniot korisnik
-										$u=$_SESSION['username'];
-										$user=mysqli_query($link, "SELECT * FROM users WHERE username LIKE '$u'");
-										$userID=mysqli_fetch_assoc($user);
-										$uID=$userID['user_id'];
+										if(isset($_SESSION['username']))
+										{
+											$u = $_SESSION['username'];
+											//$user_id=$_REQUEST["id"];
+											$user=mysqli_query($link, "SELECT * FROM users WHERE username LIKE '$u'");
+											$userID=mysqli_fetch_assoc($user);
+											$uID=$userID['user_id'];
+										}
+										else $uID=0;
 					?>
                     <div class="col-md-4 btn-right">
-                        <h3> <a class="btn btn-info" href="<?php echo "update_seat.php?userid=$uID&prodid=".$product['id']."&quantity=1"; ?>">Додади во кошничка</a></h3>
+                        <h3> <a class="btn btn-info" href="<?php echo "add_to_shoppingCart.php?userid=$uID&prodid=".$product['id']."&quantity=1"; ?>">Додади во кошничка</a></h3>
 						
                     </div>  
- 
                 </div>	
-                <?php }?>                
+                <?php }?>            
            
 
             </div>
