@@ -82,7 +82,7 @@ $br_kor=$n_kor['korNo'];
 
 
 //citanje od podatoci od baza broj na naracki
-$query4=mysqli_query($link, "SELECT count(*) as brNar FROM `order`");
+$query4=mysqli_query($link, "SELECT count(*) as brNar FROM `orders`");
 $n_nar=mysqli_fetch_assoc($query4);
 $br_nar=$n_nar['brNar'];
 
@@ -288,7 +288,7 @@ $br_nar=$n_nar['brNar'];
             	
 			
             	//progress bars percentage
-				$query=mysqli_query($link, "SELECT p.name as name , sum(od.quantity) as numSold FROM `products` p, `order_details` od WHERE p.id = od.product_id group by od.product_id limit 5");
+				$query=mysqli_query($link, "SELECT p.name as name , sum(od.quantity) as numSold FROM `products` p, `orders` od WHERE p.id = od.product_id group by od.product_id limit 5");
 				while ($row=mysqli_fetch_assoc($query)){
 				//get tickets number
 				//$query3="Select count(*) as no_tickets from tickets t, events e, event_details ed where t.details_id=ed.event_detailsId AND ed.event_id=e.eventId and e.eventId=$row[eventId]";

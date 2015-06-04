@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: localhost
--- Generation Time: May 28, 2015 at 10:25 PM
+-- Generation Time: Jun 04, 2015 at 12:19 PM
 -- Server version: 5.6.12-log
 -- PHP Version: 5.4.12
 
@@ -21,6 +21,27 @@ SET time_zone = "+00:00";
 --
 CREATE DATABASE IF NOT EXISTS `finki-online-shop-db` DEFAULT CHARACTER SET utf8 COLLATE utf8_bin;
 USE `finki-online-shop-db`;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `cart`
+--
+
+CREATE TABLE IF NOT EXISTS `cart` (
+  `cart_id` int(11) NOT NULL AUTO_INCREMENT,
+  `user_id` int(11) NOT NULL,
+  `product_id` int(11) NOT NULL,
+  `quantity` int(11) NOT NULL,
+  PRIMARY KEY (`cart_id`)
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_bin AUTO_INCREMENT=27 ;
+
+--
+-- Dumping data for table `cart`
+--
+
+INSERT INTO `cart` (`cart_id`, `user_id`, `product_id`, `quantity`) VALUES
+(1, 0, 1, 2);
 
 -- --------------------------------------------------------
 
@@ -46,6 +67,31 @@ INSERT INTO `categories` (`id`, `name`, `description`) VALUES
 (5, 'Мултимедија', 'мултимедија'),
 (6, 'Мрежна опрема', 'мрежна опрема'),
 (7, 'USB флеш', 'усб');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `orders`
+--
+
+CREATE TABLE IF NOT EXISTS `orders` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `user_id` int(11) NOT NULL,
+  `product_id` int(11) NOT NULL,
+  `quantity` int(11) NOT NULL,
+  `cost` float NOT NULL,
+  `date` date NOT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_bin AUTO_INCREMENT=6 ;
+
+--
+-- Dumping data for table `orders`
+--
+
+INSERT INTO `orders` (`id`, `user_id`, `product_id`, `quantity`, `cost`, `date`) VALUES
+(3, 8, 7, 1, 53000, '2015-06-04'),
+(4, 8, 15, 1, 8990, '2015-06-04'),
+(5, 8, 26, 2, 700, '2015-06-04');
 
 -- --------------------------------------------------------
 
@@ -93,7 +139,6 @@ INSERT INTO `products` (`id`, `name`, `description`, `category_id`, `small_img`,
 (30, 'APACER USB 3.0 FLASH DRIVE AH350(AP128GAH350B-1)', '128GB ', 7, 'apacer_black.jpg', 'apacer_black.jpg', 4090),
 (31, 'USB Flash Drive ADATA AC008-64G-RWE', '64GB ', 7, 'adata.jpg', 'adata.jpg', 1390);
 
-
 -- --------------------------------------------------------
 
 --
@@ -118,83 +163,6 @@ INSERT INTO `users` (`user_id`, `username`, `password`, `email`, `usertype`) VAL
 (8, 'user1', '438cecd9768256dcb439ddc610ce4b72', 'user1@finki.mk', 'user'),
 (9, 'user2', '438cecd9768256dcb439ddc610ce4b72', 'user2@finki.mk', 'user'),
 (10, 'user3', '438cecd9768256dcb439ddc610ce4b72', 'user3@finki.mk', 'user');
-
--- --------------------------------------------------------
-
---
--- Table structure for table `order`
---
-
-CREATE TABLE IF NOT EXISTS `order` (
-  `id` int(11) NOT NULL AUTO_INCREMENT,
-  `user_id` int(11) NOT NULL,
-  `customerName` varchar(30) CHARACTER SET latin1 NOT NULL,
-  `customerMail` varchar(30) CHARACTER SET latin1 NOT NULL,
-  `shippingAddress` varchar(100) CHARACTER SET latin1 NOT NULL,
-  `date` date NOT NULL,
-  PRIMARY KEY (`id`),
-  FOREIGN KEY (`user_id`) REFERENCES `users`(`user_id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_bin AUTO_INCREMENT=3 ;
-
---
--- Dumping data for table `order`
---
-
-INSERT INTO `order` (`id`, `user_id`, `customerName`, `customerMail`, `shippingAddress`, `date`) VALUES
-(1, 8, 'name', 'user1@finki.com', 'address ', '2015-05-18'),
-(2, 9, 'name2', 'user2@finki.com', 'address', '2015-05-20');
-
--- --------------------------------------------------------
-
---
--- Table structure for table `order_details`
---
-
-CREATE TABLE IF NOT EXISTS `order_details` (
-  `order_id` int(11) NOT NULL,
-  `product_id` int(11) NOT NULL,
-  `quantity` int(11) NOT NULL,
-  PRIMARY KEY (`order_id`,`product_id`),
-  FOREIGN KEY (`product_id`) REFERENCES `products`(`id`),
-  FOREIGN KEY (`order_id`) REFERENCES `order`(`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_bin;
-
---
--- Dumping data for table `order_details`
---
-
-INSERT INTO `order_details` (`order_id`, `product_id`, `quantity`) VALUES
-(1, 6, 2),
-(2, 10, 3),
-(2, 19, 1);
-
--- --------------------------------------------------------
-
---
--- Table structure for table `cart`
---
-
-CREATE TABLE IF NOT EXISTS `cart` (
-  `cart_id` int(11) NOT NULL AUTO_INCREMENT,
-  `user_id` int(11) NOT NULL,
-  `product_id` int(11) NOT NULL,
-  `quantity` int(11) NOT NULL,
-  PRIMARY KEY (`cart_id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_bin AUTO_INCREMENT=9 ;
-
---
--- Dumping data for table `cart`
---
-
-INSERT INTO `cart` (`cart_id`, `user_id`, `product_id`, `quantity`) VALUES
-(1, 9, 6, 2),
-(2, 8, 7, 1),
-(3, 8, 21, 1),
-(4, 8, 21, 1),
-(5, 8, 16, 1),
-(6, 8, 7, 1),
-(7, 8, 23, 1),
-(8, 8, 10, 1);
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;

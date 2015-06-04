@@ -41,7 +41,6 @@
 						    <tr>
 						        <th>Име на производ</th>
 						        <th>Дата</th>
-								<th>Адреса</th>
 								<th>Количина</th>
 						        <th>Цена</th>
 						        <th>Вкупно</th>
@@ -54,31 +53,28 @@
 								$userID=$id['user_id'];
 								
 								//gi naogame site rezervirani producti od korisnikot
-								$orders=mysqli_query($link, "SELECT * FROM `order` WHERE user_id LIKE '$userID'");
+								$orders=mysqli_query($link, "SELECT * FROM `orders` WHERE user_id LIKE '$userID'");
 
 								//gi naogame site kupeni producti od korisnikot
 								while ($order=mysqli_fetch_assoc($orders)) {
-									$orderID = $order['id'];
+									$orderID=$order['id'];
+									$product= $order['product_id'];
+									$quantity = $order['quantity'];
+									$cost = $order['cost'];
 									$date = $order['date'];
-									$address = $order['shippingAddress'];
 
-									$productInfoPrev=mysqli_query($link, "SELECT * FROM order_details, products
-									WHERE order_details.order_id LIKE '$orderID' AND products.id=order_details.product_id");
-									
+									$productInfoPrev=mysqli_query($link, "SELECT * FROM products WHERE id LIKE '$product'");									
 									while ($pr=mysqli_fetch_assoc($productInfoPrev)) {
-										$quantity = $pr['quantity'];
 										$name=$pr['name'];
 										$price=$pr['price'];	
-										$totalPrice = $price * $quantity;	
 										
 							?>
 							    <tr>
 							        <td><?php echo $name; ?></td>
 									 <td><?php echo $date; ?></td>
-									 <td><?php echo $address; ?></td>
 									<td><?php echo $quantity; ?></td>
 							        <td><?php echo $price; ?></td>
-									<td><?php echo $totalPrice; ?></td>
+									<td><?php echo $cost; ?></td>
 							    </tr>
 							    	<?php  } }?>
 						    </tbody>
@@ -96,7 +92,7 @@
 							<div class="row well">
 
 								<p align="center">
-									2014  ФИНКИ |    Факултет за информатички науки и компјутерско инженерство
+									2015  ФИНКИ |    Факултет за информатички науки и компјутерско инженерство
 								</p>
 							</div>
 

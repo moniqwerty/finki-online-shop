@@ -161,7 +161,7 @@ if(isset($_GET['event_id']))
   			include_once 'database.php';
   			//$counter sluzi za boenje na tabelata
   			$counter=0;
-  			$query="SELECT products.*, coalesce(order_details.quantity, 0) as num_bought FROM products LEFT OUTER JOIN order_details ON products.id = order_details.product_id order by products.id";
+  			$query="SELECT products.*, coalesce(orders.quantity, 0) as num_bought FROM products LEFT OUTER JOIN orders ON products.id = orders.product_id order by products.id";
   			$res=mysqli_query($link, $query);
 
   			while($row=mysqli_fetch_assoc($res))			{

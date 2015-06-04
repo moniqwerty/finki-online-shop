@@ -101,7 +101,7 @@
 	$ackDoExpressCheckout = strtoupper($resArrayDoExpressCheckout["ACK"]);
 	include('header.php');
 		//se vklucuva stranata preku koja se brisat biletite od rezerviran i se dodavaat vo kupeni 
-	include_once '../buyTickets.php';
+	include_once '../cashout.php';
 		foreach($_SESSION as $key => $val)
 		{		
 		    if ($key !== 'username')
@@ -162,7 +162,6 @@
     			<p>Payment Status: <?php  echo($paymentStatus);?> </p>
     			<p>Payment Type: <?php  echo($paymentType);?> </p>
     			<h3> Click <a href='../homeUser.php'>here </a> to return to Home Page</h3>
-    			<h4 style="color:#08c;">Напомена: Кодовите за купените билети кои треба да ги покажете на билетара можете да ги најдете на Вашата профилна страница.</h4>
     			</div>
     		</span>
     		<span class="span3">
