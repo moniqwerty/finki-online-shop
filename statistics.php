@@ -244,23 +244,23 @@ if(!empty($_SESSION['adminname'])) {
 include_once 'database.php';
 
  //get sold tickets for march
-$q3=mysqli_query($link, "SELECT sum(od.quantity) as sold FROM `order_details` od, `order` o WHERE od.order_id=o.id and o.date > '2015-02-31' and o.date < '2015-04-01' group by month(o.date);");
+$q3=mysqli_query($link, "SELECT sum(o.quantity) as sold FROM `orders` o WHERE  o.date > '2015-02-31' and o.date < '2015-04-01' group by month(o.date);");
 $row3=mysqli_fetch_assoc($q3);
 $soldMar=$row3['sold'];
  //get sold tickets for april
-$q4=mysqli_query($link, "SELECT sum(od.quantity) as sold FROM `order_details` od, `order` o WHERE od.order_id=o.id and o.date > '2015-03-31' and o.date < '2015-05-01' group by month(o.date)");
+$q4=mysqli_query($link, "SELECT sum(o.quantity) as sold FROM `orders` o WHERE o.date > '2015-03-31' and o.date < '2015-05-01' group by month(o.date)");
 $row4=mysqli_fetch_assoc($q4);
 $soldApr=$row4['sold'];
 //get sold tickets for may
-$q5=mysqli_query($link, "SELECT sum(od.quantity) as sold FROM `order_details` od, `order` o WHERE od.order_id=o.id and o.date > '2015-04-31' and o.date < '2015-06-01' group by month(o.date)");
+$q5=mysqli_query($link, "SELECT sum(o.quantity) as sold FROM `orders` o WHERE o.date > '2015-04-31' and o.date < '2015-06-01' group by month(o.date)");
 $row5=mysqli_fetch_assoc($q5);
 $soldMay=$row5['sold'];
 // //get sold tickets for june
-$q=mysqli_query($link, "SELECT sum(od.quantity) as sold FROM `order_details` od, `order` o WHERE od.order_id=o.id and o.date > '2015-05-31' and o.date < '2015-07-01' group by month(o.date)");
+$q=mysqli_query($link, "SELECT sum(o.quantity) as sold FROM `orders` o WHERE o.date > '2015-05-31' and o.date < '2015-07-01' group by month(o.date)");
 $row1=mysqli_fetch_assoc($q);
 $soldJune=$row1['sold'];
 // //get sold tickets for july
-$q2=mysqli_query($link, "SELECT sum(od.quantity) as sold FROM `order_details` od, `order` o WHERE od.order_id=o.id and o.date > '2015-06-31' and o.date < '2015-08-01' group by month(o.date)");
+$q2=mysqli_query($link, "SELECT sum(o.quantity) as sold FROM `orders` o WHERE o.date > '2015-06-31' and o.date < '2015-08-01' group by month(o.date)");
 $row2=mysqli_fetch_assoc($q2);
 $soldJuly=$row2['sold'];
 
@@ -322,19 +322,29 @@ Morris.Area({
 <?php 
 include_once 'database.php';
 
-$cat1=mysqli_query($link, "select sum(od.quantity) as sold from `categories` c, `products` p, `order_details` od where c.id = p.category_id and od.product_id = p.id and c.name='Category 1' group by c.name");
+$cat1=mysqli_query($link, "select sum(o.quantity) as sold from `categories` c, `products` p, `orders` o where c.id = p.category_id and o.product_id = p.id and c.name='Компјутери' group by c.name");
 $row11=mysqli_fetch_assoc($cat1);
 $catt1=$row11['sold'];
 
-$cat2=mysqli_query($link, "select sum(od.quantity) as sold1 from `categories` c, `products` p, `order_details` od where c.id = p.category_id and od.product_id = p.id and c.name='Category 2' group by c.name");
+$cat2=mysqli_query($link, "select sum(o.quantity) as sold1 from `categories` c, `products` p, `orders` o where c.id = p.category_id and o.product_id = p.id and c.name='Преносни компјутери' group by c.name");
 $row22=mysqli_fetch_assoc($cat2);
 $catt2=$row22['sold1'];
 
-$cat3=mysqli_query($link, "select sum(od.quantity) as sold2 from `categories` c, `products` p, `order_details` od where c.id = p.category_id and od.product_id = p.id and c.name='Category 3' group by c.name");
+$cat3=mysqli_query($link, "select sum(o.quantity) as sold2 from `categories` c, `products` p, `orders` o where c.id = p.category_id and o.product_id = p.id and c.name='Компјутерски делови' group by c.name");
 $row33=mysqli_fetch_assoc($cat3);
 $catt3=$row33['sold2'];
  
+$cat4=mysqli_query($link, "select sum(o.quantity) as sold3 from `categories` c, `products` p, `orders` o where c.id = p.category_id and o.product_id = p.id and c.name='Мултимедија' group by c.name");
+$row44=mysqli_fetch_assoc($cat4);
+$catt4=$row44['sold3'];
 
+$cat5=mysqli_query($link, "select sum(o.quantity) as sold4 from `categories` c, `products` p, `orders` o where c.id = p.category_id and o.product_id = p.id and c.name='Мрежна опрема' group by c.name");
+$row55=mysqli_fetch_assoc($cat5);
+$catt5=$row55['sold4'];
+
+$cat6=mysqli_query($link, "select sum(o.quantity) as sold5 from `categories` c, `products` p, `orders` o where c.id = p.category_id and o.product_id = p.id and c.name='USB флеш' group by c.name");
+$row66=mysqli_fetch_assoc($cat6);
+$catt6=$row66['sold5'];
 
 ?>
 
@@ -372,10 +382,12 @@ $catt3=$row33['sold2'];
                 type: 'pie',
                 name: '',
                 data: [                    
-                    ['Category 1',   parseInt('<?php echo intval($catt1); ?>')],
-                    ['Category 2',       parseInt('<?php echo intval($catt2); ?>')],
-                    ['Category 3',    parseInt('<?php echo intval($catt3); ?>')]                   
-                    
+                    ['Компјутери',   parseInt('<?php echo intval($catt1); ?>')],
+                    ['Преносни компјутери',       parseInt('<?php echo intval($catt2); ?>')],
+                    ['Компјутерски делови',    parseInt('<?php echo intval($catt3); ?>')] ,
+					['Мултимедија',    parseInt('<?php echo intval($catt4); ?>')],
+					['Мрежна опрема',    parseInt('<?php echo intval($catt5); ?>')],
+					['USB флеш',    parseInt('<?php echo intval($catt6); ?>')] 
                 ]
             }]
         });
