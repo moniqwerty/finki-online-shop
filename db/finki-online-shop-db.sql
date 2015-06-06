@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: localhost
--- Generation Time: Jun 04, 2015 at 12:19 PM
+-- Generation Time: Jun 06, 2015 at 06:05 PM
 -- Server version: 5.6.12-log
 -- PHP Version: 5.4.12
 
@@ -33,15 +33,12 @@ CREATE TABLE IF NOT EXISTS `cart` (
   `user_id` int(11) NOT NULL,
   `product_id` int(11) NOT NULL,
   `quantity` int(11) NOT NULL,
-  PRIMARY KEY (`cart_id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_bin AUTO_INCREMENT=27 ;
-
---
--- Dumping data for table `cart`
---
-
-INSERT INTO `cart` (`cart_id`, `user_id`, `product_id`, `quantity`) VALUES
-(1, 0, 1, 2);
+  PRIMARY KEY (`cart_id`),
+  KEY `user_id` (`user_id`),
+  KEY `product_id` (`product_id`),
+  KEY `user_id_2` (`user_id`),
+  KEY `product_id_2` (`product_id`)
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_bin AUTO_INCREMENT=2 ;
 
 -- --------------------------------------------------------
 
@@ -81,7 +78,9 @@ CREATE TABLE IF NOT EXISTS `orders` (
   `quantity` int(11) NOT NULL,
   `cost` float NOT NULL,
   `date` date NOT NULL,
-  PRIMARY KEY (`id`)
+  PRIMARY KEY (`id`),
+  KEY `user_id` (`user_id`),
+  KEY `product_id` (`product_id`)
 ) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_bin AUTO_INCREMENT=6 ;
 
 --
@@ -107,7 +106,11 @@ CREATE TABLE IF NOT EXISTS `products` (
   `small_img` varchar(100) CHARACTER SET latin1 NOT NULL,
   `big_img` varchar(100) CHARACTER SET latin1 NOT NULL,
   `price` float NOT NULL,
-  PRIMARY KEY (`id`)
+  PRIMARY KEY (`id`),
+  KEY `id` (`id`),
+  KEY `id_2` (`id`),
+  KEY `id_3` (`id`),
+  KEY `category_id` (`category_id`)
 ) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_bin AUTO_INCREMENT=32 ;
 
 --
@@ -163,6 +166,30 @@ INSERT INTO `users` (`user_id`, `username`, `password`, `email`, `usertype`) VAL
 (8, 'user1', '438cecd9768256dcb439ddc610ce4b72', 'user1@finki.mk', 'user'),
 (9, 'user2', '438cecd9768256dcb439ddc610ce4b72', 'user2@finki.mk', 'user'),
 (10, 'user3', '438cecd9768256dcb439ddc610ce4b72', 'user3@finki.mk', 'user');
+
+--
+-- Constraints for dumped tables
+--
+
+--
+-- Constraints for table `cart`
+--
+ALTER TABLE `cart`
+  ADD CONSTRAINT `cart_ibfk_2` FOREIGN KEY (`product_id`) REFERENCES `products` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION,
+  ADD CONSTRAINT `cart_ibfk_1` FOREIGN KEY (`user_id`) REFERENCES `users` (`user_id`) ON DELETE NO ACTION ON UPDATE NO ACTION;
+
+--
+-- Constraints for table `orders`
+--
+ALTER TABLE `orders`
+  ADD CONSTRAINT `orders_ibfk_2` FOREIGN KEY (`product_id`) REFERENCES `products` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION,
+  ADD CONSTRAINT `orders_ibfk_1` FOREIGN KEY (`user_id`) REFERENCES `users` (`user_id`) ON DELETE NO ACTION ON UPDATE NO ACTION;
+
+--
+-- Constraints for table `products`
+--
+ALTER TABLE `products`
+  ADD CONSTRAINT `products_ibfk_1` FOREIGN KEY (`category_id`) REFERENCES `categories` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
