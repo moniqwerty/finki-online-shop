@@ -198,6 +198,8 @@
 			echo "Short Error Message: " . $ErrorShortMsg;
 			echo "Error Code: " . $ErrorCode;
 			echo "Error Severity Code: " . $ErrorSeverityCode;
+			$home="../homeUser.php";
+			echo "<h3> Click <a href='$home'>here </a> to return to Home Page</h3>";
 		}
 	}		
 ?>
